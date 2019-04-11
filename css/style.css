@@ -1,0 +1,81 @@
+/*
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+*/
+/* 
+    Created on : 03/04/2019, 12:14:12
+    Author     : democrito.rodrigo
+*/
+
+header{
+    height: 150px;
+    /*align-content: center;*/
+    padding: 3% 10% 1% 20%;
+    color: darkblue;
+}
+header img{
+    float: left;
+    margin-right: 5%;
+}
+
+h1{
+    width: 50% !important;
+    align-self: center;
+}
+
+p{text-align: center;}
+
+section{
+    padding: 5% 8%;
+}
+
+.secaoForm{
+    background-color: #ddd;
+}
+
+form{
+    min-height: 350px;
+    background-color: white;
+    border-radius: 25px;
+    padding: 5%;
+    align-content: center;
+}
+
+form input{
+    height: 34px;
+    border-radius: 4px;
+    border: 1px #ccc solid;
+    background-color: #eee;
+}
+
+form input:active{
+    box-shadow: 2px #3A7ADB;
+}
+
+table th, td{
+    align-self: center;
+    width: border-box;
+    width: -moz-border-box;
+    margin: auto;
+}
+thead tr{
+    background-color: darkblue;
+    color: white;
+}
+tbody tr:nth-child(even){
+    background-color: #ffffdd;
+    color: black;
+}
+tbody tr:nth-child(odd){
+    background-color: #ddffdd;
+    color: black;
+}
+
+.div-tabela{
+    margin: 1% 10% 5% 10%;
+}
+
+footer p{
+    text-align: center;
+}
