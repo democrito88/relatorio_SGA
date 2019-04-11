@@ -7,7 +7,6 @@ and open the template in the editor.
     Created on : 03/04/2019, 12:14:12
     Author     : democrito.rodrigo
 */
-
 header{
     height: 150px;
     /*align-content: center;*/
@@ -77,5 +76,10 @@ tbody tr:nth-child(odd){
 }
 
 footer p{
+    text-align: center;
+}
+
+.titulo-tabela{
+    color: #666;
     text-align: center;
 }

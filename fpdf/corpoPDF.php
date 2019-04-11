@@ -34,8 +34,10 @@ class corpoPDF extends FPDF{
         $this->Cell(0,10, utf8_decode('Página ').$this->PageNo().'/{nb}',0,0,'C');
     }
     
-    // Tabela
-    function TabelaAtendimento($header, $data){
+    // Tabela Atendimento
+    function TabelaAtendimento($data){
+        
+        $cabecalho = array('Atendente',utf8_decode('Serviço'),'Data','Chegada','Chamado as',utf8_decode('Início'), 'Fim');
         
         $this->Cell(60);
         $this->SetFont('Arial','B',20);
@@ -49,8 +51,8 @@ class corpoPDF extends FPDF{
         $this->SetFont('','B',10);
         // Array de largura das células
         $w = array(50, 43, 21, 18, 23, 17, 17);
-        for($i=0;$i<count($header);$i++)
-            $this->Cell($w[$i],5,$header[$i],1,0,'C',true);
+        for($i=0;$i<count($cabecalho);$i++)
+            $this->Cell($w[$i],5,$cabecalho[$i],1,0,'C',true);
         $this->Ln();
         // Color and font restoration
         $this->SetFillColor(221,255,221);
@@ -59,7 +61,7 @@ class corpoPDF extends FPDF{
         // Data
         $preencherAmarelo = false;
         $preencher = true;
-        while($row = pg_fetch_assoc($data)){
+        foreach($data as $row){
             $this->Cell($w[0],4, utf8_decode($row['atendente']),'LR',0,'L',$preencher);
             $this->Cell($w[1],4, utf8_decode($row['serviço']),'LR',0,'L',$preencher);
             $this->Cell($w[2],4, $row['data_do_atendimento'],'LR',0,'L',$preencher);
@@ -75,6 +77,48 @@ class corpoPDF extends FPDF{
             }else{
                 $this->Cell($w[6],4, $row['fim_do_atendimento'],'LR',0,'L',$preencher);
             }
+            
+            $this->Ln();
+            $preencherAmarelo = !$preencherAmarelo;
+            //Altera as cores das células de amarelo p/ verde
+            $preencherAmarelo ? $this->SetFillColor(255,255,221) : $this->SetFillColor(221,255,221);
+        }
+        // Closing line
+        $this->Cell(array_sum($w),0,'','T');
+    }
+    
+    // Tabela Atendente
+    function TabelaAtendente($data){
+        
+        $cabecalho = array('Atendente','Data','Chegada',utf8_decode('Saída'));
+        
+        $this->Cell(60);
+        $this->SetFont('Arial','B',20);
+        $this->Cell(60,5, "Tabela de Atendentes",'',0,'C');
+        $this->Ln(5);
+        // Colors, line width and bold font
+        $this->SetFillColor(0,0,139);
+        $this->SetTextColor(255);
+        $this->SetDrawColor(224,224,224);
+        $this->SetLineWidth(.3);
+        $this->SetFont('','B',10);
+        // Array de largura das células
+        $w = array(50, 43, 21, 18);
+        for($i=0;$i<count($cabecalho);$i++)
+            $this->Cell($w[$i],5,$cabecalho[$i],1,0,'C',true);
+        $this->Ln();
+        // Color and font restoration
+        $this->SetFillColor(221,255,221);
+        $this->SetTextColor(0);
+        $this->SetFont('','',8);
+        // Data
+        $preencherAmarelo = false;
+        $preencher = true;
+        foreach($data as $row){
+            $this->Cell($w[0],4, utf8_decode($row['usuario']),'LR',0,'L',$preencher);
+            $this->Cell($w[1],4, $row['dia'],'LR',0,'L',$preencher);
+            $this->Cell($w[2],4, $row['hora_entrada'],'LR',0,'L',$preencher);
+            $this->Cell($w[3],4, $row['hora_saida'],'LR',0,'L',$preencher);
             
             $this->Ln();
             $preencherAmarelo = !$preencherAmarelo;

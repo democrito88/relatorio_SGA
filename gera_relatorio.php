@@ -2,6 +2,8 @@
 include_once './util/conection.php';
 include_once './util/corpo.php';
 
+session_start();
+
 if($_SERVER['REQUEST_METHOD'] == 'POST'){
     $conn = conecta();
     
@@ -61,7 +63,7 @@ LEFT JOIN
     WHERE ".(!is_null($dataInicial1) && !is_null($dataFinal1) ? "l.dt_log BETWEEN '".$dataInicial1."' AND '".$dataFinal1."' AND" : "")."
         l.in_out = 'O') saidas
 ON entradas.id_usu = saidas.id_usu
-".(!is_null($atendente1) ? "WHERE entradas.id_usu = ".$atendente1 : "").
+".(!is_null($atendente1) ? " WHERE entradas.id_usu = ".$atendente1 : " WHERE TRUE ").
 "ORDER BY entradas.data_,
 saidas.data_,
 entradas.usuario LIMIT 25;
@@ -80,17 +82,39 @@ entradas.usuario LIMIT 25;
     $resultados1 = pg_query($conn, $queryHorarioAtendente);
     desconecta($conn);
     
+    if(!is_bool($resultados)){
+        $i = 0;
+        $data = array();
+        while($resultado = pg_fetch_assoc($resultados)){
+            $data[$i] = $resultado;
+            $i++;
+        }
+        $_SESSION['data'] = $data;
+        pg_result_seek($resultados, 0);
+    }
+    
+    if(!is_bool($resultados1)){
+        $i = 0;
+        $data1 = array();
+        while($resultado = pg_fetch_assoc($resultados1)){
+            $data1[$i] = $resultado;
+            $i++;
+        }
+        $_SESSION['data1'] = $data1;
+        pg_result_seek($resultados1, 0);
+    }
     cabecalho();
     ?>
 <section>
+    <button class="btn btn-primary" onclick="window.location.replace('formulario.php');"><span class="glyphicon glyphicon-circle-arrow-left"></span>&nbsp;Voltar</button>
+    <button class="btn btn-danger" style="float: right;" onclick="window.location.replace('./fpdf/relatorioPDF.php')"><span class="icon icon-file-pdf"></span>&nbsp;Gerar PDF</button><br><br>
     
-    <button class="btn btn-primary" onclick="window.location.replace('formulario.php');"><span class="glyphicon glyphicon-circle-arrow-left"></span>&nbsp;Voltar</button><br><br>
     <?php /*Se for requerido um relatório de atendimento*/
     if(strpos($filtro, "AND") != false){?>
-    <h3>Tabela de atendimentos</h3>
+    <h3 class="titulo-tabela">Tabela de atendimentos</h3>
     <table class="table table-hover">
         <thead>
-            <tr><th>Atendente</th><th>Serviço</th><th>Data do Atend.</th><th>Chegada</th><th>Chamado</th><th>Inicio do Atendimento</th><th>Fim do Atendimento</th></tr>
+            <tr><th>Atendente</th><th>Serviço</th><th>Data do Atend.</th><th>Chegada do Contribuinte</th><th>Chamado de Atendimento</th><th>Inicio do Atendimento</th><th>Fim do Atendimento</th></tr>
         </thead>
         <tbody>
 <?php
@@ -112,8 +136,8 @@ entradas.usuario LIMIT 25;
     </table><br><br>
     <?php
     /*Se for requerido um relatório de atendente*/
-    if(!is_null($atendente1)){?>
-    <h3>Tabela de atendente(s)</h3>
+    if(!is_null($atendente1) || !is_null($dataInicial1)){?>
+    <h3 class="titulo-tabela">Tabela de atendente(s)</h3>
     <table class="table table-hover">
         <thead>
             <tr><th>Atendente</th><th>Data</th><th>Chegada</th><th>Saída</th></tr>

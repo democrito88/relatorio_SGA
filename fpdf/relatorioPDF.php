@@ -1,11 +1,9 @@
 <?php
 include_once './corpoPDF.php';
 include_once '../util/conection.php';
-
-$cabecalho = array('Atendente',utf8_decode('Serviço'),'Data','Chegada','Chamado as',utf8_decode('Início'), 'Fim');
-
+session_start();
 //consulta dados no banco
-$conn = conecta();
+/*$conn = conecta();
     
 isset($_POST['atendente'])? $atendente = pg_escape_string($conn, $_POST['atendente']) : $atendente = null;
 isset($_POST['servico'])? $servico = pg_escape_string($conn, $_POST['servico']) : $servico = null;
@@ -37,13 +35,25 @@ if(!is_null($horaInicial)){$filtro .= " AND CAST(a.dt_cheg as time) BETWEEN '".$
 if(!is_null($horaFinal)){$filtro .= " AND '".$horaFinal ."'";}
 $filtro .= " LIMIT 100;";
 
-$resultados = pg_query($conn, $query.$filtro);
-desconecta($conn);
+$resultados = pg_query($conn, $query.$filtro);*/
+
+$data = $_SESSION['data'];
+$data1 = $_SESSION['data1'];
+/*foreach($resultados as $resultado){
+    echo $resultado['atendente']."<br>";
+}
+
+foreach($resultados1 as $resultado){
+    echo $resultado['usuario']."<br>";
+}*/
+//desconecta($conn);
 
 // Instanciando classe herdada
 $pdf = new corpoPDF();
 $pdf->AliasNbPages();
 $pdf->AddPage();
-$pdf->SetFont('arial','',10);
-$pdf->TabelaAtendimento($cabecalho, $resultados);
+$pdf->SetFont('Arial','',10);
+$pdf->TabelaAtendimento($data);
+$pdf->Ln(50);
+$pdf->TabelaAtendente($data1);
 $pdf->Output();
