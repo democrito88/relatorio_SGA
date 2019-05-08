@@ -1,6 +1,8 @@
 <?php
 
 function cabecalho(){
+    session_start();
+    if(!isset($_SESSION['nome']) && !is_string($_SESSION['nome'])){header("Location: index.php");}
     echo "<!DOCTYPE html>
 <html lang=\"pt-br\">
 <head>
@@ -39,6 +41,7 @@ function cabecalho(){
         <h1 style='text-align: center;'>
         <span class='icon icon-clipboard'></span>
         &nbsp;Relatório do SGA</h1>
+        <p class='bem-vindo'>Bem vindo(a), ".$_SESSION['nome']." | <a href='logout.php'>Logout</a></p>
     </header>";
 }
 

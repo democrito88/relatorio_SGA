@@ -7,20 +7,65 @@ and open the template in the editor.
     Created on : 03/04/2019, 12:14:12
     Author     : democrito.rodrigo
 */
+body{
+    height: 100%;
+    overflow-y: hidden;
+}
+.secaoLogin{
+    height: inherit;
+    background-color: darkgreen;
+    padding: calc(25% - 140px) calc(50% - 290px);
+}
+.painel-login{
+    padding: 5%;
+    height: 280px;
+    width: 580px;
+    border: 1px lightgreen solid;
+    border-radius: 8px;
+    box-shadow: 5px 5px 5px lightgreen;
+    background-color: white;
+    color: #666;
+}
+.painel-login-esquerda{
+    float: left;
+    margin: 30px 20px 0 0;
+}
+.painel-login-direita{
+    float: right;
+}
+
+.painel-login-direita form{
+    min-height: inherit !important;
+    padding: 0 !important;
+    border-radius: 0 !important;
+}
+
 header{
     height: 150px;
     /*align-content: center;*/
     padding: 3% 10% 1% 20%;
     color: darkblue;
 }
+
 header img{
     float: left;
     margin-right: 5%;
 }
 
+.bem-vindo{
+    float: right;
+    color: #0000CC;
+    margin-right: 10px;
+}
+
+.bem-vindo a{ color: #0000CC;}
+.bem-vindo a:hover{text-decoration: none !important;}
+.bem-vindo a:visited{ color: #0000CC;}
+
 h1{
-    width: 50% !important;
     align-self: center;
+    text-align: center;
+    font-size: 30px !important;
 }
 
 p{text-align: center;}

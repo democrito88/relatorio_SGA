@@ -1,9 +1,7 @@
 <?php
 include_once './util/conection.php';
 include_once './util/corpo.php';
-
-session_start();
-
+cabecalho();
 if($_SERVER['REQUEST_METHOD'] == 'POST'){
     $conn = conecta();
     
@@ -66,7 +64,7 @@ ON entradas.id_usu = saidas.id_usu
 ".(!is_null($atendente1) ? " WHERE entradas.id_usu = ".$atendente1 : " WHERE TRUE ").
 "ORDER BY entradas.data_,
 saidas.data_,
-entradas.usuario LIMIT 25;
+entradas.usuario LIMIT 1000;
 ";
     
     $filtro = "";
@@ -76,13 +74,13 @@ entradas.usuario LIMIT 25;
     if(!is_null($dataFinal)){$filtro .= " AND '".$dataFinal."'";}
     if(!is_null($horaInicial)){$filtro .= " AND CAST(a.dt_cheg as time) BETWEEN '".$horaInicial."' ";}
     if(!is_null($horaFinal)){$filtro .= " AND '".$horaFinal ."'";}
-    $filtro .= " LIMIT 50;";
+    $filtro .= " LIMIT 1000;";
     
     $resultados = pg_query($conn, $query.$filtro);
     $resultados1 = pg_query($conn, $queryHorarioAtendente);
     desconecta($conn);
     
-    if(!is_bool($resultados)){
+    if(!is_bool($resultados) && pg_num_rows($resultados) != 0 && pg_num_rows($resultados) != 1000){
         $i = 0;
         $data = array();
         while($resultado = pg_fetch_assoc($resultados)){
@@ -93,7 +91,7 @@ entradas.usuario LIMIT 25;
         pg_result_seek($resultados, 0);
     }
     
-    if(!is_bool($resultados1)){
+    if(!is_bool($resultados1) && pg_num_rows($resultados1) != 0 && pg_num_rows($resultados1) != 1000){
         $i = 0;
         $data1 = array();
         while($resultado = pg_fetch_assoc($resultados1)){
@@ -103,7 +101,6 @@ entradas.usuario LIMIT 25;
         $_SESSION['data1'] = $data1;
         pg_result_seek($resultados1, 0);
     }
-    cabecalho();
     ?>
 <section>
     <button class="btn btn-primary" onclick="window.location.replace('formulario.php');"><span class="glyphicon glyphicon-circle-arrow-left"></span>&nbsp;Voltar</button>
