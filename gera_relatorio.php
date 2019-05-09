@@ -80,27 +80,32 @@ entradas.usuario LIMIT 1000;
     $resultados1 = pg_query($conn, $queryHorarioAtendente);
     desconecta($conn);
     
-    if(!is_bool($resultados) && pg_num_rows($resultados) != 0 && pg_num_rows($resultados) != 1000){
-        $i = 0;
-        $data = array();
-        while($resultado = pg_fetch_assoc($resultados)){
-            $data[$i] = $resultado;
-            $i++;
+    if(isset($_POST['atendente']) || isset($_POST['servico']) || isset($_POST['dataInicial']) || isset($_POST['dataFinal']) || isset($_POST['horaInicial']) || isset($_POST['horaFinal'])){
+        if(!is_bool($resultados) && pg_num_rows($resultados) != 0 && pg_num_rows($resultados) != 1000){
+            $i = 0;
+            $data = array();
+            while($resultado = pg_fetch_assoc($resultados)){
+                $data[$i] = $resultado;
+                $i++;
+            }
+            $_SESSION['data'] = $data;
+            pg_result_seek($resultados, 0);
         }
-        $_SESSION['data'] = $data;
-        pg_result_seek($resultados, 0);
     }
     
-    if(!is_bool($resultados1) && pg_num_rows($resultados1) != 0 && pg_num_rows($resultados1) != 1000){
-        $i = 0;
-        $data1 = array();
-        while($resultado = pg_fetch_assoc($resultados1)){
-            $data1[$i] = $resultado;
-            $i++;
+    if(isset($_POST['atendente1']) || isset($_POST['dataInicial1']) || isset($_POST['dataFinal1'])){
+        if(!is_bool($resultados1) && pg_num_rows($resultados1) != 0 && pg_num_rows($resultados1) != 1000){
+            $i = 0;
+            $data1 = array();
+            while($resultado = pg_fetch_assoc($resultados1)){
+                $data1[$i] = $resultado;
+                $i++;
+            }
+            $_SESSION['data1'] = $data1;
+            pg_result_seek($resultados1, 0);
         }
-        $_SESSION['data1'] = $data1;
-        pg_result_seek($resultados1, 0);
     }
+    
     ?>
 <section>
     <button class="btn btn-primary" onclick="window.location.replace('formulario.php');"><span class="glyphicon glyphicon-circle-arrow-left"></span>&nbsp;Voltar</button>

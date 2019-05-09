@@ -7,12 +7,9 @@ and open the template in the editor.
     Created on : 03/04/2019, 12:14:12
     Author     : democrito.rodrigo
 */
-body{
-    height: 100%;
-    overflow-y: hidden;
-}
 .secaoLogin{
-    height: inherit;
+    height: available;
+    overflow-y: hidden;
     background-color: darkgreen;
     padding: calc(25% - 140px) calc(50% - 290px);
 }
