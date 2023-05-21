@@ -1,9 +1,10 @@
 # relatorio_SGA
 
-![](https://img.shields.io/badge/61.6%-HTML%205.0-orange)
-![](https://img.shields.io/badge/25.2%-PHP%207.2-blue)
-![](https://img.shields.io/badge/6.6%-Javascript-yellow)
-![](https://img.shields.io/badge/6.6%-CSS-blueviolet)
+![HTML](https://img.shields.io/badge/61.6%-HTML%205.0-orange)
+![PHP](https://img.shields.io/badge/25.2%-PHP%207.2-blue)
+![Javascript](https://img.shields.io/badge/6.6%-Javascript-yellow)
+![CSS](https://img.shields.io/static/v1?label=6.6%&message=CSS&color=blueviolet)
+![Badge em Desenvolvimento](http://img.shields.io/static/v1?label=STATUS&message=EM%20DESENVOLVIMENTO&color=GREEN&style=for-the-badge)
   
 <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="110" height="20" role="img" aria-label="61.6%: HTML 5.0"><title>61.6%: HTML 5.0</title><linearGradient id="s" x2="0" y2="100%"><stop offset="0" stop-color="#bbb" stop-opacity=".1"/><stop offset="1" stop-opacity=".1"/></linearGradient><clipPath id="r"><rect width="110" height="20" rx="3" fill="#fff"/></clipPath><g clip-path="url(#r)"><rect width="47" height="20" fill="#555"/><rect x="47" width="63" height="20" fill="#fe7d37"/><rect width="110" height="20" fill="url(#s)"/></g><g fill="#fff" text-anchor="middle" font-family="Verdana,Geneva,DejaVu Sans,sans-serif" text-rendering="geometricPrecision" font-size="110"><text aria-hidden="true" x="245" y="150" fill="#010101" fill-opacity=".3" transform="scale(.1)" textLength="370">61.6%</text><text x="245" y="140" transform="scale(.1)" fill="#fff" textLength="370">61.6%</text><text aria-hidden="true" x="775" y="150" fill="#010101" fill-opacity=".3" transform="scale(.1)" textLength="530">HTML 5.0</text><text x="775" y="140" transform="scale(.1)" fill="#fff" textLength="530">HTML 5.0</text></g></svg>
 <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="100" height="20" role="img" aria-label="25.2%: PHP 7.2"><title>25.2%: PHP 7.2</title><linearGradient id="s" x2="0" y2="100%"><stop offset="0" stop-color="#bbb" stop-opacity=".1"/><stop offset="1" stop-opacity=".1"/></linearGradient><clipPath id="r"><rect width="100" height="20" rx="3" fill="#fff"/></clipPath><g clip-path="url(#r)"><rect width="47" height="20" fill="#555"/><rect x="47" width="53" height="20" fill="#007ec6"/><rect width="100" height="20" fill="url(#s)"/></g><g fill="#fff" text-anchor="middle" font-family="Verdana,Geneva,DejaVu Sans,sans-serif" text-rendering="geometricPrecision" font-size="110"><text aria-hidden="true" x="245" y="150" fill="#010101" fill-opacity=".3" transform="scale(.1)" textLength="370">25.2%</text><text x="245" y="140" transform="scale(.1)" fill="#fff" textLength="370">25.2%</text><text aria-hidden="true" x="725" y="150" fill="#010101" fill-opacity=".3" transform="scale(.1)" textLength="430">PHP 7.2</text><text x="725" y="140" transform="scale(.1)" fill="#fff" textLength="430">PHP 7.2</text></g></svg>
