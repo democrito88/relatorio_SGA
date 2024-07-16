@@ -4,7 +4,7 @@
 ![PHP](https://img.shields.io/static/v1?label=25.2%&message=PHP%207.2&color=blue)
 ![Javascript](https://img.shields.io/static/v1?label=6.6%&message=Javascript&color=yellow)
 ![CSS](https://img.shields.io/static/v1?label=6.6%&message=CSS&color=blueviolet)
-![MySQL](https://img.shields.io/static/v1?&message=MySQL%208.0&color=navy)
+![Postgree](https://img.shields.io/static/v1?&message=Postgree&color=navy)
 
 🇺🇸
 Simple system that consumes SGA v1.2 system database and generate PDF reports.
